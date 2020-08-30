@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script>
+        function checklogin(){
+            if(document.flogin.u.value==''){
+                alert("Bạn chưa nhập username");	
+                document.flogin.u.focus(); //Chọn đối tượng u
+                return false;   // Chặn form không cho submit
+            }
+            if(document.flogin.p.value=='') {
+                alert("Bạn chưa nhập password");	
+                document.flogin.p.focus();	//Chọn đối tượng p
+                return false;	
+            }	
+            return true; // Cho submit form khi đã kiểm tra xong
+        }
+    </script>
+    <style>
+        body{
+            background-color: rgb(246, 246, 245);
+        }
+        .container{
+            width: 300px;
+            margin: auto;
+            border: 1px solid rgb(111, 90, 131);
+            background-color: rgb(111, 90, 131);
+            margin-top: 70px;
+            border-radius: 10px;
+        }
+        form{
+            margin-left: 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            
+        }
+        #u,#p{
+            margin-bottom: 20px;
+            width: 250px;
+            height: 30px;
+           
+        }
+        p{
+            margin-bottom: -10px;
+            color: white;
+        }
+        #sub{
+            padding: 10px 30px;
+            font-size: 16px;
+            background-color: rgb(60, 60, 165);
+            border: none;
+            color: white;
+            margin-left: 80px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="return checklogin();" name="flogin" method="post" action="xulylogin.php" >
+            <p>Username:</p><br/> <input name="u" id="u" type="text" /> <br/>
+            <p>Password:</p><br/> <input name="p" id="p" type="password"/> <br/>
+            <input type="submit" name="sub" id="sub" value="Login" />
+        </form>  
+    </div>
+</body>
+</html>

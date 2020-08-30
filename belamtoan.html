@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bé làm toán</title>
+    <script>
+        var a;
+        var b;
+        function taoSo(){
+            a = Math.floor(Math.random() * 11);
+            document.getElementById("soa").value = a;
+            console.log(a);
+            b = Math.floor(Math.random() * 11);
+            console.log(b);
+            document.getElementById("sob").value = b;
+        }
+        
+        function dapAn(){
+            var dapAn = a+b;
+            console.log(dapAn);
+            a = Number(a);
+            b = Number(b);
+            var nhapDapAn = document.getElementById("dapAn").value;
+            console.log(dapAn);
+            if(nhapDapAn == dapAn){
+                alert("GIỎI QUÁ BÉ ƠI!")
+            }
+            else{
+                document.getElementById("daDung").innerHTML = "Đáp án đúng là: "+dapAn;
+                alert("SAI RỒI BÉ IU!")
+            }
+        }
+        
+    </script>
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+        .container{
+            width: 500px;
+            margin: auto;
+            margin-top: 80px;
+            background-color: rgb(222, 227, 250);
+            border-radius: 10px;
+            padding: 20px 20px 50px 20px;
+            box-shadow: 5px 5px 5px aquamarine;
+        }
+        h2{
+            text-align: center;
+            color: rgb(63, 63, 122);
+            margin-bottom: 50px;
+        }
+        p{
+            font-size: 20px;
+            color: blueviolet;
+            margin-left: 50px;
+            font-weight: bold;
+        }
+        #soa,#sob{
+            margin-left: 50px;
+            width: 250px;
+            height: 25px;
+            border-radius: 5px;
+            border: 1.5px solid blueviolet; 
+        }
+        #dapAn{
+            margin-left: 27px;
+            width: 250px;
+            height: 25px;
+            border-radius: 5px;
+            border: 1.5px solid blueviolet;
+        }
+        input{
+            text-align: center;
+            font-size: 16px;
+        }
+        button{
+            border: none;
+            background-color: aqua;
+            padding: 10px 20px;
+            margin-left: 50px;
+            margin-right: 50px;
+            color: rgb(131, 20, 20);
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 7px;
+            margin-top: 30px;
+        }
+        .btn{
+            text-align: center;
+        }
+        #daDung{
+            text-align: center;
+            margin-top: 50px;
+            font-size: 20px;
+            color: rgb(192, 15, 15);
+        }
+        button:hover{
+            background-color: rgb(223, 214, 214);
+            color: rgb(126, 67, 67);
+            transition: all 0.5s;
+        }
+    </style>
+</head>
+<body">
+    <div class="container">
+        <h2>BÉ YÊU LÀM TOÁN</h2>
+        <p>Số A: <input id="soa" type="text" value=""></p>
+        <p>Số B: <input id="sob" type="text" value=""></p>
+        <p>Đáp án: <input id="dapAn" type="text"></p>
+        <div class="btn">
+            <button onclick="taoSo()">Cho số</button>
+            <button onclick="dapAn()">Trả lời</button>
+        </div>
+        <div id="daDung"></div>
+    </div>
+</body>
+</html>

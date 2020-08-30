@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra form search</title>
+    <script> 
+        function checksearch (){
+        
+        if(document.formtim.tukhoa.value=='Tìm kiếm')	{
+            alert("Bạn chưa nhập từ khóa tìm kiếm…");	
+            document.formtim.tukhoa.focus();		
+            return false;	// Chặn form không cho submit
+        }
+        return true; // Cho submit form khi đã kiểm tra xong
+    }
+    </script>
+    <style>
+         body{
+            background-color: rgb(246, 246, 245);
+        }
+        .container{
+            width: 450px;
+            margin: auto;
+            border: 1px solid rgb(151, 91, 91);
+            background-color: rgb(151, 91, 91);
+            margin-top: 200px;
+            border-radius: 10px;
+        }
+        form{
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #tukhoa{
+            width: 320px;
+            height: 30px;
+            padding-left: 5px;
+        }
+        #btntim{
+            height: 34px;
+            border: none;
+            width: 70px;
+            margin-left: 10px;
+            background-color: rgb(71, 31, 79);
+            padding-left: 3px;
+          
+            color: white;
+            letter-spacing: 1px;
+        }
+    </style>
+<body>
+    <div class="container">
+        <form name=formtim action="kqtim.php" method="get"  onsubmit="return checksearch();">
+            <input onclick="if(this.value=='Tìm kiếm') this.value=''" onblur="if(this.value=='') this.value='Tìm kiếm'" name="tukhoa" id="tukhoa" type="text" value="Tìm kiếm" />  
+            <input name="btntim" id="btntim" type="submit" value=" TÌM "/>    
+        </form>
+    </div>
+</body>
+</html>

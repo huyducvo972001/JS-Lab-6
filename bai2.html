@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng</title>
+    <style>
+        body{
+            background-color: rgb(230, 225, 219);
+        }
+        form { 
+            width: 600px; 
+            margin:100px auto; 
+            border: 0.001px solid none;
+            box-shadow: 5px 5px 5px darkcyan;
+            border-radius: 10px;
+            font-size: 1.2em;
+            transform: rotate(-10deg);
+            background-color: white;
+        }
+        label { 
+            width: 120px; 
+            display: inline-block;
+        }
+        p { 
+            margin-left: 15px;
+            color: rgb(100, 90, 90);
+        }    
+        input[id], select { 
+            padding: 8px; 
+            width: 420px; 
+            background-color: salmon; 
+            border: none;
+        }
+        button { 
+            width: 140px; 
+            height: 40px; 
+            border: none; 
+            background-color: darkgoldenrod;
+            margin-bottom: 20px;
+            
+        }
+        h2{
+            text-align: center;
+            background-color: rgb(90, 53, 126);
+            margin: 0;
+            border-radius: 10px 10px 0 0;
+            padding: 8px 0;
+            color: white;
+        }
+    </style>
+    <script>
+        function hienthi(v){
+            var vc = document.getElementById("vc");
+            vc.style.display = (v==true)? "" : "none";
+            
+        }
+
+        function kiemtra(){
+            thanhcong = true;
+            thongbao = "";
+            //kiểm tra tên sp
+            var sp = document.getElementById("tensp");
+            if(sp.value.length ==0 ){
+                thongbao+="Vui lòng nhập tên sản phẩm<br>";
+                thanhcong = false;
+                
+            }
+            //kiểm tra giá
+            var gia = document.getElementById("gia");
+            if(gia.value == ""){
+                thongbao+="Bạn chưa nhập giá sản phẩm<br>";
+                thanhcong = false;
+            }
+            if(isNaN(gia.value)==true){
+                thongbao+="Bạn cần nhập giá là số <br>";
+                thanhcong = false;
+            }
+            if(parseInt(gia.value)<=0){
+                thongbao += "Bạn phải nhập giá là số dương<br>";
+                thanhcong=false; 
+            }
+            //kiểm tra loại sản phẩm
+            var loai = document.getElementById("loai");
+            if(loai.value==""){
+                thongbao+="Chọn 1 loại sản phẩm đi<br>";
+                thanhcong=false;
+            }
+            //kiểm tra nơi nhận hàng
+            var radios = document.getElementsByName("diachi");
+            if(radios[0].checked == false && !radios[1].checked == true){
+                thongbao += "Vui lòng chọn nơi giao hàng<br>";
+                thanhcong = false;
+            }
+            if(thongbao=="") {
+                thongbao="Nhập đúng dữ liệu";
+                alert("Đặt hàng thành công!");
+            }
+            document.getElementById("kq").innerHTML=thongbao;
+            return thanhcong;
+            
+            
+             
+        }
+        function anvc(){
+            document.getElementById("vc").style.display = 'none';
+        }
+
+    </script>
+</head>
+<body onload="anvc()">
+    <form>
+        <h2>ĐẶT HÀNG</h2>
+        <p> <label>Sản phẩm</label> <input id="tensp" placeholder="Nhập tên sản phẩm"/> </p>
+        <p> <label>Loại</label> 
+            <select id="loai" style="width: 435.5px;">
+                <option value="">Chọn loại sản phẩm</option>
+                <option value="DT">Điện thoại</option>
+                <option value="MT">Máy tính</option>
+            </select>
+        </p>
+        <p> <label>Đơn giá</label> <input id="gia" placeholder="Nhập đơn giá" /> </p>
+        <p> <label>Nơi nhận hàng</label>
+            <input type="radio" name="diachi" onclick="hienthi(false)">Nội thành
+            <input type="radio" name="diachi" onclick="hienthi(true)">Ngoại thành
+        </p>
+        
+        <p id="vc"><label>Phí vận chuyển</label> <input id="phi_vc" value="100000"></p>    
+        <p style="margin-left: 104px;"> <label></label> <button  type="button" onclick="return kiemtra()">Đặt mua</button></p>  
+        
+        <div id="kq" style="text-align: center; color: brown; line-height: 30px; margin-top: -20px; padding-bottom: 20px;"></div>
+    </form>
+    
+</body>
+</html>
